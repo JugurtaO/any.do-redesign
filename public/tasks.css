@@ -18,32 +18,11 @@
     justify-content:space-around;
 }
 
-
-#back-task{
-    background-image: url('./background.jpg');
-    background-size:cover;
-    background-repeat: no-repeat ;
-    object-fit: fill;
-    width:  100%;
-    height: 100%;
-   }
-
-#backsignup{
-    background-image: url("./back-login.jpg");
-    background-size:cover;
-    background-repeat: no-repeat ;
-    width: 100%;
-    height: 100%;
-   
+.row{
+    margin-top: 0;
 }
-#backlogin{
-    background-image: url("./back-login.jpg");
-    background-size:cover;
-    background-repeat: no-repeat ;
-    width: 100%;
-    height: 100%;
-   
-}
+
+
 
 #actions{
     padding-left: 100px;

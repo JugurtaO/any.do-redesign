@@ -1,53 +1,44 @@
-
 <!-- Header -->
 <div id="header-wrapper">
-    <header id="header" class="container">
+  <header id="header" class="container">
 
-        <!-- Logo -->
-            <div id="logo">
-                <h1><a href="/home">Any.do</a></h1>
-                <span>Jugurta OURZIK</span>
-            </div>
+    <!-- Logo -->
+    <div id="logo">
+      <h1><a href="/home">Any.do</a></h1>
+      <span>Jugurta OURZIK</span>
+    </div>
 
-        <!-- Nav -->
-            <nav id="nav">
-                <ul>
-                    <li class="current"><a href="/home">Welcome</a></li>
-                    <li>
-                        <a href="#">Dropdown</a>
-                        <ul>
-                            <li><a href="#">Lorem ipsum dolor</a></li>
-                            <li><a href="#">Magna phasellus</a></li>
-                            <li>
-                                <a href="#">Phasellus consequat</a>
-                                <ul>
-                                    <li><a href="#">Lorem ipsum dolor</a></li>
-                                    <li><a href="#">Phasellus consequat</a></li>
-                                    <li><a href="#">Magna phasellus</a></li>
-                                    <li><a href="#">Etiam dolore nisl</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Veroeros feugiat</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Left Sidebar</a></li>
-                    <li><a href="/about">About us</a></li>
-                    
-                    <% if (!active_user_email) { %>
-                        <li><a href="/users/signup">Sign up</a></li>
-                        
-                        
-                        
-                        <%  }else { %>
-                            <li><a href="/users/signout">Signout</a></li>
-                            
-                            <% }%>
-                            
+    <!-- Nav -->
+    <nav id="nav">
+      <ul>
+        <li class="current"><a href="#">Welcome</a></li>
+        <% if (active_user_email) { %>
+            <li><a href="/trash">Trash</a></li>
+         
+        <% } %>
+        <li><a href="/about">About us</a></li>
+        <li>
+          <a href="#">Dropdown</a>
+          <ul>
+            <% if (!active_user_email) { %>
+                <li><a href="/users/signup">Sign up</a></li>
+        
+        
+        
+                <%  }else { %>
+                <li><a href="/users/logout">Logout</a></li>
+                <li><a href="/users/signout">Signout</a></li>
+        
+                <% }%>
+          </ul>
+        </li>
+
+        
 
 
-                </ul>
-            </nav>
 
-    </header>
+      </ul>
+    </nav>
+
+  </header>
 </div>
-
