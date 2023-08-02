@@ -1,3 +1,10 @@
+
+html,body{
+    background-color:  #e2d5de;
+    margin: 0;
+    height: 100%;
+}
+
 .newTask{
     display: flex;
     flex-direction: row;
@@ -10,17 +17,10 @@
 
 #savebtn{
     margin-left: 60px;
+    margin-bottom: 50px;
 }
 
-.global{
-    display: flex;
-    flex-direction: row;
-    justify-content:space-around;
-}
 
-.row{
-    margin-top: 0;
-}
 
 
 
