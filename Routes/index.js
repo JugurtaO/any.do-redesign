@@ -23,6 +23,8 @@ router.post("/tasks/add", sanitize,checkLogin,taskControllers.addTask);
 router.post("/tasks/:task_id/restore", sanitize,checkLogin,taskControllers.restoreTask);
 router.post("/tasks/:task_id/edit", sanitize,checkLogin,taskControllers.editTask)
 router.post("/tasks/:task_id/delete",sanitize, checkLogin,taskControllers.deleteTask)
+router.post("/tasks/:task_id/deleteDif",sanitize, checkLogin,taskControllers.deleteDif)
+
 
 router.post("/users/signup",sanitize,taskControllers.signup);
 router.post("/users/login",sanitize,taskControllers.login);

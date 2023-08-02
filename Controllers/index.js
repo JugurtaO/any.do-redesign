@@ -4,6 +4,8 @@ module.exports.renderAbout=require("./renderAbout").renderAbout;
 
 module.exports.addTask=require("./addTask").addTask;
 module.exports.deleteTask=require("./deleteTask").deleteTask;
+module.exports.deleteDif=require("./deleteDif").deleteDif;
+
 module.exports.restoreTask=require("./restoreTask").restoreTask;
 module.exports.editTask=require("./editTask").editTask;
 module.exports.viewEditPage=require("./viewEditPage").viewEditPage;
