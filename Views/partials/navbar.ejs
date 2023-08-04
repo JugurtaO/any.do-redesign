@@ -11,7 +11,7 @@
     <!-- Nav -->
     <nav id="nav">
       <ul>
-        <li class="current"><a href="/allTasks">New task</a></li>
+        <li class="current"><a href="/allTasks"><i class="fa fa-tasks" aria-hidden="true"></i> New task</a></li>
         <% if (active_user_email) { %>
             <li><a href="/trash">Trash</a></li>
          
@@ -21,8 +21,8 @@
           <a href="#">Dropdown</a>
           <ul>
             <% if (!active_user_email) { %>
-                <li><a href="/users/signup">Sign up</a></li>
-                <li><a href="/users/login">Login</a></li>
+                <li><a href="/users/signup"> <i class="fas fa-user-plus"></i> Sign up</a></li>
+                <li><a href="/users/login"> <i class="fas fa-user-check"></i> Login</a></li>
               
         
         
@@ -30,7 +30,7 @@
                 <%  }else { %>
                 <li>
                   <form action="/users/logout" method="post">
-                    <button type="submit" class="btn btn-dark px-3 me-2 " style="border: none;" >
+                    <button type="submit" class="btn btn-transparent px-3 me-2 " style="border: none;" >
                         <i class="fas fa-sign-out-alt"></i>Logout
                     </button>
                   </form>

@@ -50,7 +50,7 @@
                 <input type="text" id="form3" class="form-control form-control-lg" placeholder="Do it your way ..." name="task_body"/>
                 <label class="form-label" for="form3">What do you need to do today?</label>
               </div>
-              <button type="submit" class="btn btn-primary btn-lg ms-2" id="savebtn">Add</button>
+              <button type="submit" class="btn btn-primary btn-lg ms-2" id="savebtn">Save</button>
             </form>
 
             <ul class="list-group mb-0">
@@ -64,6 +64,12 @@
                 <form action="/tasks/<%=task.Task_ID %>/delete" method="post">
                   <button type="submit" class="btn btn-danger" style="color: white;">Delete <i class="fa fa-trash-o" aria-hidden="true"></i>
                   </button>
+                </form>
+
+                <form action="/tasks/<%=task.Task_ID%>/editPage" method="get">
+                  <button type="submit" class="btn btn-success ms-1" style="color: white;">Edit <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </button>
+
                 </form>
 
               </li>
