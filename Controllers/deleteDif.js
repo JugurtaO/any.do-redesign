@@ -1,6 +1,6 @@
 const { db_handler } = require("../config/config");
 
-module.exports.deleteDif = (req, res) => {
+module.exports.deleteDif = (req, res,next) => {
 
     const { task_id } = req.params;
 

@@ -1,5 +1,5 @@
 const flash=require("connect-flash");
-module.exports.logout = (req, res) => {
+module.exports.logout = (req, res,next) => {
     
     if(!req.session.active_user_email){
         req.flash("success","Already logged out.");

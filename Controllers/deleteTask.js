@@ -1,6 +1,6 @@
 const { db_handler } = require("../config/config");
 
-module.exports.deleteTask = (req, res) => {
+module.exports.deleteTask = (req, res,next) => {
 
     const { task_id } = req.params;
 
@@ -21,16 +21,14 @@ module.exports.deleteTask = (req, res) => {
 
                 db_handler.query(query2, (err) => {
                     if (err)
-                        console.log("Error playload is set to: " + err.message);
-
+                    return next(err);
                     else {
 
                         //now delete task from Task table
                         queryString = `DELETE FROM Task WHERE Task_ID = ${task_id};`;
                         db_handler.query(queryString, (err) => {
                             if (err)
-                                console.log("Error playload is set to: " + err.message);
-                            else{
+                            return next(err);                            else{
                                 req.flash("success","Task deleted successfully");
                                 return res.redirect("/allTasks"); 
                             }

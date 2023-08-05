@@ -1,6 +1,6 @@
 const { db_handler } = require("../config/config");
 
-module.exports.addTask = (req, res) => {
+module.exports.addTask = (req, res,next) => {
   
     const { task_body } = req.body;
     
@@ -11,7 +11,7 @@ module.exports.addTask = (req, res) => {
 
     db_handler.query(queryString, (err) => {
         if (err)
-            console.log("Error playload is set to: " + err.message);
+            return next(err);
 
         else{
             req.flash("success","Task created successfully");

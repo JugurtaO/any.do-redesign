@@ -1,7 +1,7 @@
 const { db_handler } = require("../config/config");
 
-module.exports.restoreTask = (req, res) => {
-  
+module.exports.restoreTask = (req, res, next) => {
+
     const { task_id } = req.params;
 
     //get task_body and user_id in order to insert task into Task before removing it from Trash table
@@ -9,8 +9,7 @@ module.exports.restoreTask = (req, res) => {
 
     db_handler.query(query, (err, results) => {
         if (err)
-            console.log("Error playload is set to: " + err.message);
-        else
+            return next(err); else
             if (results && results.length == 1) {
                 let Task_Body = results[0].Task_Body;
                 let user_id = results[0].user_id;
@@ -21,21 +20,18 @@ module.exports.restoreTask = (req, res) => {
 
                 db_handler.query(query2, (err) => {
                     if (err)
-                        console.log("Error playload is set to: " + err.message);
-
+                    return next(err);
                     else {
 
                         //now delete task from Trash table after retoring it
                         queryString = `DELETE FROM Trash WHERE Task_ID = ${task_id};`;
                         db_handler.query(queryString, (err) => {
                             if (err)
-                                console.log("Error playload is set to: " + err.message);
-                            else
-                               {
-                                req.flash("success","Task restored successfully");
-                                return res.redirect("/trash"); 
-                               }
-                            
+                            return next(err);                            else {
+                                req.flash("success", "Task restored successfully");
+                                return res.redirect("/trash");
+                            }
+
 
                         })
                     }
@@ -46,7 +42,7 @@ module.exports.restoreTask = (req, res) => {
 
 
             }
-     
+
 
     })
 

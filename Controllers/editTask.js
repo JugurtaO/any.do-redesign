@@ -1,6 +1,6 @@
 const { db_handler } = require("../config/config");
 
-module.exports.editTask = (req, res) => {
+module.exports.editTask = (req, res, next) => {
 
     const { task_body } = req.body;
     const { task_id } = req.params;
@@ -9,12 +9,11 @@ module.exports.editTask = (req, res) => {
 
     db_handler.query(queryString, (err) => {
         if (err)
-            console.log("Error playload is set to: " + err.message);
+            return next(err);
+        req.flash("success", "Task edited successfully");
+        return res.redirect("/allTasks");
 
-            req.flash("success","Task edited successfully");
-            return res.redirect("/allTasks"); 
 
-        
     })
 
 }

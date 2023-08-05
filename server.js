@@ -5,6 +5,7 @@ if (process.NODE_ENV != "production" ){
 const express = require('express')
 const app = express();
 
+
 //requiring connect-flash module
 const flash = require('connect-flash');
 
@@ -93,6 +94,17 @@ app.use((req, res, next) => {
 //routes handler
 app.use(router);
 
+
+//errors handling middlwares 
+import expressError from "./utils/expressError"; 
+app.all('*',(req,res,next)=>{
+    next(new expressError("Not Found",404));
+})
+
+app.use((err,req,res,next) =>{
+    const {statusCode=500,message='Something went wrong'}=err;
+    res.status(statusCode).send("Oh booy "+ message);
+});
 
 
 // launch application on port 3000

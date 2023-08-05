@@ -1,7 +1,7 @@
 const { db_handler } = require("../config/config");
 const bcrypt = require("bcryptjs");
 const flash = require("connect-flash");
-module.exports.signout = (req, res) => {
+module.exports.signout = (req, res,next) => {
 
     const { user_email, user_password } = req.body;
     const USER_ID = req.session.active_user_id;
@@ -12,7 +12,7 @@ module.exports.signout = (req, res) => {
 
 
     db_handler.query(sql, (err, results) => {
-        if (err) return res.send("Error payload is set to : " + err.message);
+        if (err) return next(err);
 
 
         if (!results || results.length != 1) {
@@ -37,17 +37,17 @@ module.exports.signout = (req, res) => {
         db_handler.query(sql1, (err) => {
             /** sql does not work for an error that we do not understand. */
             //lE PROBLÈME EST LÀ , LA SYNTAXE DE LA REQÛÊTE EST FAUSSE 
-            if (err) return res.send("Error payload is set to : " + err.message);
+            if (err)   return next(err);
             let sql2 = ` DELETE FROM Task WHERE user_id =${USER_ID} ;`;
             db_handler.query(sql2, (err) => {
 
-                if (err) return res.send("Error payload is set to : " + err.message);
+                if (err)   return next(err);
 
                 let sql3 = ` DELETE FROM USER WHERE user_id =${USER_ID} ;`;
 
                 db_handler.query(sql3, (err) => {
 
-                    if (err) return res.send("Error payload is set to  : " + err.message);
+                    if (err)   return next(err);
 
 
                     // destroy user session.

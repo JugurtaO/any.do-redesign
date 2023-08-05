@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const flash=require("connect-flash");
 
-module.exports.login = (req, res) => {
+module.exports.login = (req, res,next) => {
 
     const { user_email, user_password } = req.body;
 
@@ -27,8 +27,7 @@ module.exports.login = (req, res) => {
 
     db_handler.query(sql, (err, result) => {
         if (err) {
-            return res.send("Error payload is set to : "+ err.message);
-        }
+            return next(err);        }
         if(!result || result.length != 1){
             req.flash("danger","Email or Password incorrect, try again!")
             return res.redirect("/users/login");

@@ -1,7 +1,7 @@
 const { db_handler } = require("../config/config");
 const bcrypt = require("bcryptjs");
 const flash = require("connect-flash");
-module.exports.signup = (req, res) => {
+module.exports.signup = (req, res ,next) => {
 
     const { user_nickname, user_email, user_password } = req.body;
 
@@ -23,7 +23,7 @@ module.exports.signup = (req, res) => {
     db_handler.query(sql1, (err) => {
 
         if (err) {
-            return res.send("Error payload is set to hola : " + err.message);
+            return next(err);
         }
         let sql2 = `
             SELECT user_id
@@ -32,8 +32,7 @@ module.exports.signup = (req, res) => {
 
         db_handler.query(sql2, (err, results) => {
             if (err) {
-                return res.send("Error payload is set to here : " + err.message);
-            }
+                return next(err);            }
 
             if (!results || results.length != 1) {
                 req.flash("danger", "Something went wrong. Please log in to proceed !.");
