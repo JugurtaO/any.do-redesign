@@ -6,8 +6,9 @@ const {sanitize}=require("../middlewares/sanitization/sanitize");
 const {checkAuthorization}=require("../middlewares/auth/checkAuthorization");
 const {checkLogin}=require("../middlewares/auth/checkLogin");
 
-import {catchAsync} from '../../utils/catchAsync';
 
+
+const catchAsync=require('../utils/catchAsync');
 
 
 router.get('/',sanitize,taskControllers.renderHome);
