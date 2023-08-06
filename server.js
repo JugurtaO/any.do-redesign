@@ -96,7 +96,7 @@ app.use(router);
 
 
 //errors handling middlwares 
-expressError=require('./utils/expressError');
+const expressError=require('./utils/expressError');
 
 app.all('*',(req,res,next)=>{
     next(new expressError("Not Found",404));
