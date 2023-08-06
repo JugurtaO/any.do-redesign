@@ -1,6 +1,6 @@
 const { db_handler } = require("../config/config");
 
-module.exports.restoreTask = (req, res, next) => {
+module.exports.restoreTask =async (req, res, next) => {
 
     const { task_id } = req.params;
 

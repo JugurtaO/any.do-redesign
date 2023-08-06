@@ -1,6 +1,6 @@
 const { db_handler } = require("../config/config");
 
-module.exports.addTask = (req, res,next) => {
+module.exports.addTask = async (req, res,next) => {
   
     const { task_body } = req.body;
     

@@ -1,5 +1,5 @@
 const { db_handler } = require("../config/config");
-module.exports.renderTrash = (req, res,next) => {
+module.exports.renderTrash = async(req, res,next) => {
         const user_id = req.session.active_user_id;
 
         queryString = `SELECT * FROM Trash WHERE user_id = '${user_id}';`;

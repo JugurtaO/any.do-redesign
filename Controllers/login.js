@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 
 const flash=require("connect-flash");
 
-module.exports.login = (req, res,next) => {
+module.exports.login = async (req, res,next) => {
 
     const { user_email, user_password } = req.body;
 

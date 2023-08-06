@@ -1,7 +1,7 @@
 const { db_handler } = require("../config/config");
 const bcrypt = require("bcryptjs");
 const flash = require("connect-flash");
-module.exports.signup = (req, res ,next) => {
+module.exports.signup =async (req, res ,next) => {
 
     const { user_nickname, user_email, user_password } = req.body;
 

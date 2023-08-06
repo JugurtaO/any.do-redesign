@@ -1,7 +1,7 @@
 const { db_handler } = require("../config/config");
 const bcrypt = require("bcryptjs");
 const flash = require("connect-flash");
-module.exports.signout = (req, res,next) => {
+module.exports.signout = async (req, res,next) => {
 
     const { user_email, user_password } = req.body;
     const USER_ID = req.session.active_user_id;

@@ -1,6 +1,6 @@
 const { db_handler } = require("../config/config");
 
-module.exports.deleteTask = (req, res,next) => {
+module.exports.deleteTask = async(req, res,next) => {
 
     const { task_id } = req.params;
 

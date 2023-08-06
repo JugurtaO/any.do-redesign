@@ -1,6 +1,6 @@
 const { db_handler } = require("../config/config");
 
-module.exports.deleteDif = (req, res,next) => {
+module.exports.deleteDif =async  (req, res,next) => {
 
     const { task_id } = req.params;
 
@@ -9,7 +9,7 @@ module.exports.deleteDif = (req, res,next) => {
 
     db_handler.query(query, (err, results) => {
         if (err)
-            console.log("Error playload is set to: " + err.message);
+           return next(err);
        
       
         req.flash("success","Task difinitely deleted");
